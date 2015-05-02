@@ -1,0 +1,123 @@
+<div>
+    <!-- TEXT FIELD -->
+    <md-input-container ng-if="field.type=='text'">
+        <label>{{field.label}}</label>
+        <input
+                ng-required="field.required"
+                name="{{field.name}}"
+                ng-model="modelName[field.name]">
+
+        <div ng-messages="{{form.name}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{form.name}}.{{field.name}}.$touched"></div>
+    </md-input-container>
+
+
+    <!-- NUMBER FIELD -->
+    <md-input-container ng-if="field.type=='number'">
+        <label>{{field.label}}</label>
+        <input
+                type="number"
+                ng-required="field.required"
+                name="{{field.name}}"
+                ng-model="modelName[field.name]">
+
+        <div ng-messages="{{form.name}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{form.name}}.{{field.name}}.$touched"></div>
+    </md-input-container>
+
+
+    <!-- EMAIL FIELD -->
+    <md-input-container ng-if="field.type=='email'">
+        <label>{{field.label}}</label>
+        <input
+                type="email"
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-model="modelName[field.name]">
+
+        <div ng-messages="{{form.name}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{form.name}}.{{field.name}}.$touched"></div>
+    </md-input-container>
+
+
+    <!-- PASSWORD FIELD -->
+    <md-input-container ng-if="field.type=='password'">
+        <label>{{field.label}}</label>
+        <input
+                type="password"
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-minlength="{{field.minPassword}}"
+                ng-model="modelName[field.name]">
+
+        <div ng-messages="{{form.name}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{form.name}}.{{field.name}}.$touched"></div>
+    </md-input-container>
+
+
+    <!-- SELECT FIELD -->
+    <md-input-container ng-if="field.type=='select'">
+        <select
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-options="option.id as option.name for option in field.options"
+                ng-model="modelName[field.name]">
+        </select>
+
+        <div ng-messages="{{form.name}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{form.name}}.{{field.name}}.$touched">
+            <div ng-message="required">
+                You must select an option
+            </div>
+        </div>
+    </md-input-container>
+
+
+    <!-- RADIO FIELD -->
+    <md-input-container ng-if="field.type=='radio'">
+        <md-radio-group
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-model="modelName[field.name]"
+                ajax-validation="">
+            <md-radio-button ng-repeat="option in field.options"
+                             ng-value="option.id">
+                {{option.name}}
+            </md-radio-button>
+        </md-radio-group>
+
+        <div ng-messages="{{form.name}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{form.name}}.{{field.name}}.$touched">
+            <div ng-message="required">
+                You must select an option
+            </div>
+        </div>
+    </md-input-container>
+
+
+    <!-- CHECKBOX -->
+    <md-checkbox
+            ng-if="field.type=='checkbox'"
+            class="md-primary"
+            name="{{field.name}}"
+            ng-disabled="field.disabled"
+            ng-model="modelName[field.name]">
+        {{field.label}}
+    </md-checkbox>
+
+
+    <!-- SUBMIT BUTTON -->
+    <md-button
+            ng-if="field.type=='submit'"
+            name="{{field.name}}"
+            class="md-raised md-primary"
+            ng-disabled="{{form.name}}.$invalid || {{form.name}}.$pristine">
+        {{field.label}}
+    </md-button>
+</div>

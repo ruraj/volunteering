@@ -1,0 +1,21 @@
+<md-dialog aria-label="{{title}}" class="blue">
+        <md-subheader class="md-sticky-no-effect blue white-text">{{title}}</md-subheader>
+        <md-content class="sticky-container">
+            <div class="dialog-content">
+                <dn-form form="configForm" dn-model="configForm.data"></dn-form>
+            </div>
+        </md-content>
+
+        <div class="md-actions white-text" layout="row">
+            <md-button ng-click="cancel()">
+                Cancel
+            </md-button>
+            <md-button
+                    ng-click="submitForm()"
+                    class="md-primary"
+                    ng-disabled="{{configForm.name}}.$invalid || {{configForm.name}}.$pristine">
+                Ok
+            </md-button>
+        </div>
+
+</md-dialog>

@@ -1,0 +1,15 @@
+<md-bottom-sheet class="md-list md-has-header" style="position: fixed">
+  <md-subheader>{{post.title}} <b>Contacts</b></md-subheader>
+  <md-list>
+    <md-list-item layout="row" layout-padding>
+      <div flex>{{post.user.firstname}} {{post.user.lastname}} (Main)</div><div flex>{{post.user.contact}}</div>
+    </md-list-item>
+    <md-list-item layout="row" ng-repeat="location in post.locations" layout-padding>
+      <div flex>{{location.address}}, {{location.city}}</div>
+      <div flex>
+        <div>{{location.contact.firstname}} {{location.contact.lastname}}</div>
+        <div>{{location.contact.contact}}</div>
+      </div>
+    </md-list-item>
+  </md-list>
+</md-bottom-sheet>

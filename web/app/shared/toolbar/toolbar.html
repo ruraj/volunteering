@@ -1,0 +1,24 @@
+<md-toolbar class="md-theme-indigo" layout="row">
+    <div class="md-toolbar-tools">
+        <md-button hide-gt-md aria-label="Toggle Menu" ng-click="showMenu()">
+            <i class="fa fa-bars fa-lg"></i>
+        </md-button>
+        <h2 flex>
+            <span>{{ currentState | state}}</span>
+        </h2>
+    </div>
+
+    <p flex></p>
+    <div flex="20">
+        <md-select
+                name="site-selector"
+                placeholder="Select Site"
+                ng-model="persistent.currentSite"
+                class="white-text right" layout-align="end center">
+            <md-option
+                    ng-repeat="site in sites()"
+                    ng-value="site.auditable_id"
+                    selected="">{{site.name}}</md-option>
+        </md-select>
+    </div>
+</md-toolbar>

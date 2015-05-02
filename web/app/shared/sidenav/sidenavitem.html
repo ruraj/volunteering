@@ -1,0 +1,11 @@
+<li>
+    <md-button
+            ng-click="showThis(item)"
+            ng-class="{active: isSelected(item)}"
+            title="{{item.description}}">
+        <div layout="row">
+            <div class="{{item.icon}} nav-icon" alt="svc" flex="10"></div>
+            <div flex="90" class="nav-title">{{item.title}}</div>
+        </div>
+    </md-button>
+</li>

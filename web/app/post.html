@@ -1,0 +1,26 @@
+<md-card class="special-card" ng-click="showDetails($event)" flex-sm="100" flex-gt-md="48">
+  <div class="md-title">
+    <div layout-padding>
+      <h4 class="center">
+        {{post.title}}
+      </h4>
+    </div>
+  </div>
+  <md-card-content layout="column">
+    <small more-text="See all" less-text="See less" limit="100">
+      {{post.description}}
+    </small>
+    <div layout="row" layout-padding>
+      <small flex><i class="mdi mdi-calendar" layout-padding></i>Deadline</small><small flex><b>{{post.deadline}}</b></small>
+    </div>
+    <div layout="row" layout-padding>
+      <small flex><i class="mdi mdi-archive" layout-padding></i>Required Categories</small>
+      <div flex>
+        <div class="{{category}}"
+             ng-repeat="category in post.categories">
+          <small>{{category | uppercase}}</small>
+        </div>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
