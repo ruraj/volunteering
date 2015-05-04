@@ -6,7 +6,7 @@
 			parent:: __construct();
 		}
 
-		public $this->config=array(
+		public $config=array(
 			array('field'=>'email','label'=>'Email address','rules'=>'required|valid_email'),
 			array('field'=>'password','label'=>'Password','rules'=>'required')
 			);

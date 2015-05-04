@@ -16,7 +16,7 @@
 			$q=$this->db->get();
 			if($q->num_rows()>0){
 				$arr=$q->result();
-				$data['post']=json_encode($arr);
+				return $data['post']=json_encode($arr);
 			}
 
 		}

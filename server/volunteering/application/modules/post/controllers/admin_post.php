@@ -1,8 +1,8 @@
 <?php
 
-	class Admin_post extends MX_CONTROLLER{
+	class Admin_post extends CI_CONTROLLER{
 		function index(){
-			$this->load->view('detail_view');
+			$this->load->view('post_view');
 		}
 
 		function add_detail(){
@@ -14,6 +14,8 @@
 
 			if($this->form_validation->run()==TRUE){
 				$this->add_post->add_detail();
+			}else{
+				$this->index();
 			}
 		}
 

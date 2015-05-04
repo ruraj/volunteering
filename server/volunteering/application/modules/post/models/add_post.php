@@ -6,18 +6,18 @@ class Add_post extends CI_MODEL{
 		parent:: __construct();
 	}
 
-	public $this->config=array(
-		array=('field'=>'title','label'=>'Post title','rules'=>'required'),
-		array=('field'=>'description','label'=>'Post description','rules'=>'required'),
-		array=('field'=>'address','label'=>'Address','rules'=>'required'),
-		array=('field'=>'city','label'=>'City','rules'=>'required'),
-		array=('field'=>'deadline','label'=>'Deadline','rules'=>'required')
+	public $config=array(
+		array('field'=>'title','label'=>'Post title','rules'=>'required'),
+		array('field'=>'description','label'=>'Post description','rules'=>'required'),
+		array('field'=>'address','label'=>'Address','rules'=>'required'),
+		array('field'=>'city','label'=>'City','rules'=>'required'),
+		array('field'=>'deadline','label'=>'Deadline','rules'=>'required')
 		);
 
 	function add_detail(){
 		$date = date('Y-m-d H:i:s'); 
 		$data1 =array(
-			'user_id'=>$this->session->user_data('user_id'),
+			'user_id'=>$this->session->userdata('user_id'),
 			'title'=>$this->input->post('title'),
 			'description'=>$this->input->post('description'),
 			'created_at'=>$date,
@@ -28,14 +28,16 @@ class Add_post extends CI_MODEL{
 		$post_id=$this->db->insert_id();
 
 		
-		$category[]=$this->input->post('category');
-
+		$category=$this->input->post('category');
+		// print_r($category);
 		foreach($category as $cat){
-			$data3=array();
-			$data3=array_push($data3, 'post_id',$post_id);
+			$data3=array('post_id'=>$post_id);
+			// print_r($data3);die();
 			if($cat){
-				$data3=array_push($data3, 'category_id',$cat);
+				$new_array=array('category_id'=>$cat);
+				$data3=array_merge($data3,$new_array);
 			}
+			print_r($data3);
 			$this->db->insert('post_category',$data3);
 		}
 
@@ -50,8 +52,8 @@ class Add_post extends CI_MODEL{
 
 		
 		$data4=array(
-			'post_id'=$post_id,
-			'location_id'=$location_id
+			'post_id'=>$post_id,
+			'location_id'=>$location_id
 			);
 		$this->db->insert('post_location',$data4);
 

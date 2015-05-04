@@ -6,7 +6,7 @@
 			parent:: __construct();
 		}
 
-		public $this->config=array(
+		public $config=array(
 			array('field'=>'first_name', 'label'=>'First name', 'rules'=>'required'),
 			array('field'=>'last_name', 'label'=>'Last name', 'rules'=>'required'),
 			array('field'=>'contact', 'label'=>'Contact number', 'rules'=>'required'),
