@@ -5,7 +5,7 @@ angular.module("formDialog", [])
         var mOptions = {
             title: "Edit",
             template: "shared/form_dialog/default_template.html",
-            returnOnDone: "true"
+            returnOnDone: true
         };
 
         return function (options) {

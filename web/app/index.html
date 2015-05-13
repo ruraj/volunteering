@@ -47,11 +47,20 @@
                   <span>Let's Volunteer</span>
                 </h2>
                 <span flex></span>
-                <div ng-if="loggedIn()">
-                    <md-button class="md-icon-button"><i class="mdi mdi-plus"></i>Request Volunteers</md-button>
-                    <md-button class="md-icon-button" ng-if="loggedIn()"><i class="mdi mdi-account"></i>Logout</md-button>
+                <div ng-if="loggedIn()" layout-align="center center" layout="row">
+                  <md-button class="md-icon-button" ui-sref="post({id:'new'})"><i class="mdi mdi-plus"></i><span hide-sm>Request Volunteers</span></md-button>
+                  <md-button class="md-icon-button" ng-click="search.string=getUser().email"><i class="mdi mdi-view-list"></i><span hide-sm>My Requests</span></md-button>
+                  <md-button class="md-icon-button" ng-click="logout()" ng-if="loggedIn()"><i class="mdi mdi-logout"></i>
+                    <div layout="column" hide-sm>
+                      <small>{{getUser().firstname}}</small>
+                      <span>Logout</span>
+                    </div>
+                  </md-button>
                 </div>
-                <md-button class="md-icon-button" ng-if="!loggedIn()" ui-sref="login"><i class="mdi mdi-account"></i>Login</md-button>
+                <div ng-if="!loggedIn()" layout-align="center center" layout="row">
+                  <md-button class="md-icon-button" ui-sref="login"><i class="mdi mdi-login"></i><span hide-sm>Login</span></md-button>
+                  <md-button class="md-icon-button" ui-sref="register"><i class="mdi mdi-account-plus"></i><span hide-sm>Register</span></md-button>
+                </div>
               </div>
         </md-toolbar>
       </md-content>
@@ -59,10 +68,10 @@
       <md-content layout-padding>
         <md-input-container>
           <label>Search For</label>
-          <input type="text" ng-model="searchString"/>
+          <input type="text" ng-model="search.string"/>
         </md-input-container>
         <div id="posts-container" layout="row" layout-wrap>
-          <post-detail ng-repeat="post in posts | filter:searchString" post=post></post-detail>
+          <post-detail ng-repeat="post in posts() | filter:search.string" post=post></post-detail>
         </div>
       </md-content>
 
@@ -84,7 +93,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
 
