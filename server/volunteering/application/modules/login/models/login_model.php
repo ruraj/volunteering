@@ -12,8 +12,11 @@
 			);
 
 		function authenticate_user(){
-			$email=$this->input->post('email');
-			$password=md5($this->input->post('password'));
+			$str = file_get_contents("php://input");
+			$json = json_decode($str);
+
+			$email=$json->{'email'};
+			$password=md5($json->{'password'});
 
 			$this->db->where('email',$email);
 			$this->db->where('password',$password);
@@ -22,6 +25,7 @@
 				return $q->result();
 			}else{
 				// Authenticatin failed.
+				return false;
 			}
 		}
 	}

@@ -17,15 +17,17 @@
 
 
 		function add_user(){
+			$json = json_decode($this->input->post('registration_data'));
+
 			$data=array(
-				'first_name' => $this->input->post('first_name'),
-				'last_name' => $this->input->post('last_name'),
-				'contact' => $this->input->post('contact'),
-				'email' => $this->input->post('email'),
-				'password' => md5($this->input->post('password'))
+				'first_name' => $json->{'first_name'},
+				'last_name' => $json->{'last_name'},
+				'contact' => $json->{'contact'},
+				'email' => $json->{'email'},
+				'password' => md5($json->{'password'})
 				);
 			if($this->db->insert('users',$data)){
-				return true;
+				return  ;
 			}else{
 				return false;
 			}
