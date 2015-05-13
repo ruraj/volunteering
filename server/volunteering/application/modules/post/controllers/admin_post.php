@@ -1,11 +1,11 @@
 <?php
 
-	class Admin_post extends CI_CONTROLLER{
+	class Admin extends CI_CONTROLLER{
 		function index(){
 			$this->load->view('post_view');
 		}
 
-		function add_detail(){
+		function add_post(){
 
 			if (!$this->session->userdata('is_logged_in')) {
 				http_response_code(401);
@@ -19,7 +19,7 @@
 			}
 		}
 
-		function get_detail(){
+		function get_posts(){
 
 			$this->load->model('get_posts');
 			echo $this->get_posts->get_detail();

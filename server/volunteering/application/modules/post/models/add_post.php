@@ -8,15 +8,7 @@ class Add_post extends CI_MODEL
         parent:: __construct();
     }
 
-    public $config = array(
-        array('field' => 'title', 'label' => 'Post title', 'rules' => 'required'),
-        array('field' => 'description', 'label' => 'Post description', 'rules' => 'required'),
-        array('field' => 'address', 'label' => 'Address', 'rules' => 'required'),
-        array('field' => 'city', 'label' => 'City', 'rules' => 'required'),
-        array('field' => 'deadline', 'label' => 'Deadline', 'rules' => 'required')
-    );
-
-    function add_detail()
+    function add_post()
     {
         $date = date('Y-m-d H:i:s');
         $json = json_decode($this->input->post('data'));

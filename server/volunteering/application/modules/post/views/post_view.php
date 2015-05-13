@@ -9,7 +9,7 @@
 	<body>
 		<fieldset style="width: 500px; margin:auto;">
 			<legend>Form</legend>
-			<form method="post" action="<?php echo site_url('post/admin_post/add_detail');?>">
+			<form method="post" action="<?php echo site_url('post/admin/add_post');?>">
 				<label>Post Title</label>
 				<input type="text" name="title" value="<?php echo set_value('title');?>">
 				<?php echo form_error('title');?><br/>
