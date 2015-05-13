@@ -11,7 +11,8 @@ class Add_post extends CI_MODEL
     function add_post()
     {
         $date = date('Y-m-d H:i:s');
-        $json = json_decode($this->input->post('data'));
+        $str = file_get_contents("php://input");
+        $json = json_decode($str);
 
         $data1 = array(
             'user_id' => $this->session->userdata('user_id'),

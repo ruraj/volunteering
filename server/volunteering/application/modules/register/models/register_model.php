@@ -17,7 +17,8 @@
 
 
 		function add_user(){
-			$json = json_decode($this->input->post('registration_data'));
+			$str = file_get_contents("php://input");
+			$json = json_decode($str);
 
 			$data=array(
 				'first_name' => $json->{'first_name'},
