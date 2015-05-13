@@ -50,7 +50,7 @@ function MainService($http, $mdToast, $interval, $state) {
     },
     submitLogin: function (data) {
       // Do http calls
-      $http.post("/Volunteering/web/app/login", {
+      $http.post("../volunteering/user/admin/login_user", {
         data: data
       }).success(function (result, status) {
         user = result;
@@ -62,15 +62,24 @@ function MainService($http, $mdToast, $interval, $state) {
     },
     logout: function () {
       user = {};
+      $http.get("../volunteering/user/admin/logout_user");
       // Some local data storage will need to be modified and cookies
     },
     submitRegistration: function (data) {
-
+      // Do http calls
+      $http.post("../volunteering/register/register_user", {
+        data: data
+      }).success(function (result, status) {
+        notify("Registered, please login now");
+      }).error(function (result, status) {
+        notify("Could not register: "+result);
+      });
+      return true;
     },
     submitPost: function (data) {
       console.log(data);
       notify("Saving");
-      $http.post("/put_post", {
+      $http.post("../volunteering/post/admin/add_post", {
         data: data
       }).success(function (result, status, headers, config) {
         notify("Success");
@@ -80,7 +89,7 @@ function MainService($http, $mdToast, $interval, $state) {
         return false;
       })
     },
-    postFormSource: "postForm",
+    postFormSource: "../volunteering/post/admin/get_posts",
     loginForm: {
       "name": "SiteForm",
       "fields": [
@@ -112,7 +121,7 @@ function MainService($http, $mdToast, $interval, $state) {
   };
 
   function getter() {
-    $http.get("/Volunteering/web/app/get_posts")
+    $http.get("../volunteering/posts/admin/get_posts")
       .success(function (result, status, headers, config) {
         posts = result;
       }).error(function (result, status, headers, config) {
