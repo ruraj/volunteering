@@ -1,0 +1,40 @@
+body * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.rescue {
+  background: rgba(255, 120, 0, 0.51);
+}
+
+.distribution {
+  background: rgba(0, 122, 139, 0.51);
+}
+
+.awareness {
+  background: rgba(212, 255, 0, 0.5);
+}
+
+.health {
+  background: rgba(255, 238, 192, 0.51);
+}
+
+.special-card .md-title{
+  text-align: center;
+  background: #ccc;
+}
+
+a.read-more, a.read-less {
+  cursor: pointer;
+  color: #00a9ff;
+}
+span.more-text {
+  display: none;
+}
+span.more-text.show {
+  display: inline !important
+}

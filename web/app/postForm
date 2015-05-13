@@ -1,0 +1,30 @@
+{
+    "name": "SiteForm",
+    "fields":
+        [
+            [
+                [
+                    {"type": "text", "name": "identifier", "label": "Identifier" , "required": true}
+                ]
+            ],
+            [
+                [
+                    {"type": "text", "name": "name", "label": "Name", "required": true}
+                ],
+                [
+                    {"type": "text", "name": "title", "label": "Title", "required": true}
+                ],
+                [
+                    {"type": "text", "name": "subtitle", "label": "Subtitle", "required": false}
+                ]
+            ],
+            [
+                [
+                    {"type": "text", "name": "timezone", "label": "Time Zone" , "required": true},
+                    {"type": "number", "name": "minimum_display_duration", "label": "Minimum Display Duration", "required": true},
+                    {"type": "number", "name": "global_transfer_delay", "label": "Global Transfer Delay", "required": true},
+                    {"type": "checkbox", "name": "hide_prefix", "label": "Hide Prefix", "disabled": false}
+                ]
+            ]
+        ]
+}

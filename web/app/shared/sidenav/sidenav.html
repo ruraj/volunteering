@@ -1,0 +1,25 @@
+<md-sidenav
+        class="md-sidenav-left md-whiteframe-z2 nav-menu"
+        md-component-id="main-menu" md-is-locked-open="$mdMedia('gt-md')"
+        style="height: 100%;">
+    <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Easy-Q</h1>
+    </md-toolbar>
+    <md-content
+            flex
+            role="navigation">
+        <ul>
+            <li ng-repeat="item in listItems" on-finish-render="navLoaded">
+
+                <side-nav-toggle
+                        ng-if="item.type === 'toggle'"
+                        item="item">
+                </side-nav-toggle>
+                <side-nav-item
+                        ng-if="item.type === 'link'"
+                        item="item">
+                </side-nav-item>
+            </li>
+        </ul>
+    </md-content>
+</md-sidenav>

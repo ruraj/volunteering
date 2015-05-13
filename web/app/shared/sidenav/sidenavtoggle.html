@@ -1,0 +1,13 @@
+<ul class="collapsible" data-collapsible="expandable">
+    <li>
+        <div class="collapsible-header active">
+            {{item.title}}
+        </div>
+        <div class="collapsible-body">
+            <side-nav-item
+                    ng-repeat="page in item.pages"
+                    item="page">
+            </side-nav-item>
+        </div>
+    </li>
+</ul>
